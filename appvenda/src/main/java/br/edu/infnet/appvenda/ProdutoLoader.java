@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import br.edu.infnet.appvenda.model.domain.Roupas;
 import br.edu.infnet.appvenda.model.domain.Sapatos;
+import br.edu.infnet.appvenda.model.domain.Vendedor;
 import br.edu.infnet.appvenda.model.domain.Produto;
 import br.edu.infnet.appvenda.model.service.ProdutoService;
 
@@ -31,6 +32,8 @@ public class ProdutoLoader implements ApplicationRunner {
 
 		String[] campos = null;
 
+		Vendedor vendedor = new Vendedor();
+		
 		while(linha != null) {
 			
 			campos = linha.split(";");
@@ -45,6 +48,10 @@ public class ProdutoLoader implements ApplicationRunner {
 				roupas.setTipo(campos[4]);
 				roupas.setCor(campos[5]);
 				
+				vendedor.setId(Integer.valueOf(campos[7]));
+				
+				roupas.setVendedor(vendedor);
+				
 				produtoService.incluir(roupas);
 				
 				break;
@@ -57,6 +64,10 @@ public class ProdutoLoader implements ApplicationRunner {
 				sapatos.setPreco(Float.valueOf(campos[3]));
 				sapatos.setTipo(campos[4]);
 				sapatos.setCor(campos[5]);
+				
+                vendedor.setId(Integer.valueOf(campos[7]));
+				
+                sapatos.setVendedor(vendedor);
 				
 				produtoService.incluir(sapatos);
 				
@@ -71,6 +82,15 @@ public class ProdutoLoader implements ApplicationRunner {
 
 		for(Produto produto: produtoService.obterLista()) {
 			System.out.println("[Produto] " + produto);			
+		}
+		
+		System.out.println("Produtos do Vendedor " + vendedor.getId());
+		for(Produto produto : produtoService.obterLista(vendedor.getId())) {
+			System.out.println("[Produto 2] " + produto);
+		}
+		
+		for(Produto produto : produtoService.obterLista(vendedor)) {
+			System.out.println("[Produto 3] " + produto);
 		}
 		
 		leitura.close();

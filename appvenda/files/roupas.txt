@@ -1,2 +1,2 @@
-567;descricao 5;true;55;Blusa;Azul
-678;descricao 6;false;44;Bermuda masculina jeans;Verde
+567;descricao 5;true;55;Blusa;Azul;3
+678;descricao 6;false;44;Bermuda masculina jeans;Verde;4

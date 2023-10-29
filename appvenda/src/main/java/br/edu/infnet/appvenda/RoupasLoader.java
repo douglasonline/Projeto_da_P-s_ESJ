@@ -10,6 +10,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.appvenda.model.domain.Roupas;
+import br.edu.infnet.appvenda.model.domain.Vendedor;
 import br.edu.infnet.appvenda.model.service.RoupasService;
 
 @Order(3)
@@ -41,6 +42,11 @@ public class RoupasLoader implements ApplicationRunner {
 			roupas.setPreco(Float.valueOf(campos[3]));
 			roupas.setTipo(campos[4]);
 			roupas.setCor(campos[5]);
+			
+			Vendedor vendedor = new Vendedor();
+			vendedor.setId(Integer.valueOf(campos[6]));
+			
+			roupas.setVendedor(vendedor);
 			
 			roupasService.incluir(roupas);
 			

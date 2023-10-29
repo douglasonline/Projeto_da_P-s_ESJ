@@ -1,4 +1,4 @@
-123;descricao 1;true;99;Camiseta;Amarela;R
-345;descricao 3;true;77;Tênis nike;Verde;S
-234;descricao 2;false;88;Camiseta nike masculina;Preta;R
-456;descricao 4;true;66;Tamanco;Marrom;S
+123;descricao 1;true;99;Camiseta;Amarela;R;1
+345;descricao 3;true;77;Tênis nike;Verde;S;1
+234;descricao 2;false;88;Camiseta nike masculina;Preta;R;2
+456;descricao 4;true;66;Tamanco;Marrom;S;3
