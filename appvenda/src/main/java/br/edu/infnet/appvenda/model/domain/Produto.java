@@ -8,6 +8,8 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.Table;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.PositiveOrZero;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -17,10 +19,17 @@ public class Produto {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
 	private String descricao;
+	
+	@PositiveOrZero
 	private int codigo;
+	
+	@Positive
 	private float preco;
+	
 	private boolean estoque;
+	
 	@ManyToOne
 	@JoinColumn(name = "idVendedor")
 	private Vendedor vendedor;

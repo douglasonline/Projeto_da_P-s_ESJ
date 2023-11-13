@@ -20,4 +20,8 @@ public class SapatosService {
 	public Collection<Sapatos> obterLista(){	
 		return (Collection<Sapatos>) sapatosRepository.findAll();
 	}
+	
+	public long obterQtde() {
+		return sapatosRepository.count();
+	}
 }

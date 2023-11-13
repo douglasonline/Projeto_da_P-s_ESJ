@@ -1,0 +1,10 @@
+nov. 12, 2023 10:46:59 PM br.edu.infnet.appvenda.FileLogger logException
+GRAVE: [VENDEDOR] id (null) - nome (E) - cpf (999.123.123-12) - email (elberth@moraes.com) - endereco (cep (20010-020) - bairro (Centro) - uf (RJ)) - produtos (0) - Validation failed for classes [br.edu.infnet.appvenda.model.domain.Vendedor] during persist time for groups [javax.validation.groups.Default, ]
+List of constraint violations:[
+	ConstraintViolationImpl{interpolatedMessage='tamanho deve ser entre 2 e 50', propertyPath=nome, rootBeanClass=class br.edu.infnet.appvenda.model.domain.Vendedor, messageTemplate='{javax.validation.constraints.Size.message}'}
+]
+nov. 12, 2023 10:47:01 PM br.edu.infnet.appvenda.FileLogger logException
+GRAVE: [VENDEDOR] id (null) - nome (L) - cpf (999.234.234-23) - email (luiza@luiz.com) - endereco (cep (20010-020) - bairro (Centro) - uf (RJ)) - produtos (0) - Validation failed for classes [br.edu.infnet.appvenda.model.domain.Vendedor] during persist time for groups [javax.validation.groups.Default, ]
+List of constraint violations:[
+	ConstraintViolationImpl{interpolatedMessage='tamanho deve ser entre 2 e 50', propertyPath=nome, rootBeanClass=class br.edu.infnet.appvenda.model.domain.Vendedor, messageTemplate='{javax.validation.constraints.Size.message}'}
+]

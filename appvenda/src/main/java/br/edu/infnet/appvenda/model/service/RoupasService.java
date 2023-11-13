@@ -21,4 +21,8 @@ public class RoupasService {
 	public Collection<Roupas> obterLista(){	
 		return (Collection<Roupas>) roupasRepository.findAll();
 	}
+	
+	public long obterQtde() {
+		return roupasRepository.count();
+	}
 }
