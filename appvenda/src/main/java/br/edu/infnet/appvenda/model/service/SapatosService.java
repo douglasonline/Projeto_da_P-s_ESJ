@@ -17,6 +17,10 @@ public class SapatosService {
 		sapatosRepository.save(sapatos);
 	}
 	
+	public void excluir(Integer id) {
+		sapatosRepository.deleteById(id);
+	}
+	
 	public Collection<Sapatos> obterLista(){	
 		return (Collection<Sapatos>) sapatosRepository.findAll();
 	}

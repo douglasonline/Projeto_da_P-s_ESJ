@@ -18,6 +18,10 @@ public class RoupasService {
 		roupasRepository.save(roupas);
 	}
 	
+	public void excluir(Integer id) {
+		roupasRepository.deleteById(id);
+	}
+	
 	public Collection<Roupas> obterLista(){	
 		return (Collection<Roupas>) roupasRepository.findAll();
 	}

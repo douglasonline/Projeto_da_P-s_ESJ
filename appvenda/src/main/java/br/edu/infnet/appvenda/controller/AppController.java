@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-
+import br.edu.infnet.appvenda.model.service.InformacaoService;
 import br.edu.infnet.appvenda.model.service.ProdutoService;
 import br.edu.infnet.appvenda.model.service.RoupasService;
 import br.edu.infnet.appvenda.model.service.SapatosService;
@@ -22,9 +22,13 @@ public class AppController {
 	private RoupasService roupasService;
 	@Autowired
 	private SapatosService sapatosService;
+	@Autowired
+	private InformacaoService informacaoService;
 
 	@GetMapping(value = "/")
 	public String showHome(Model model) {
+		
+		model.addAttribute("informacoes", informacaoService.obterLista());
 		
 		model.addAttribute("qtdeVendedor", vendedorService.obterQtde());
 		model.addAttribute("qtdeProduto", produtoService.obterQtde());
@@ -32,32 +36,5 @@ public class AppController {
 		model.addAttribute("qtdeSapatos", sapatosService.obterQtde());
 
 		return "home";
-	}
-	
-	@GetMapping(value = "/produto/lista")
-	public String obterListaProduto(Model model) {
-		
-		model.addAttribute("titulo", "Produtos:");
-		model.addAttribute("listagem", produtoService.obterLista());
-
-		return showHome(model);
-	}
-
-	@GetMapping(value = "/roupas/lista")
-	public String obterListaRoupas(Model model) {
-		
-		model.addAttribute("titulo", "Produtos Roupas:");
-		model.addAttribute("listagem", roupasService.obterLista());
-
-		return showHome(model);
-	}
-
-	@GetMapping(value = "/sapatos/lista")
-	public String obterListaSapatos(Model model) {
-		
-		model.addAttribute("titulo", "Produtos Sapatos:");
-		model.addAttribute("listagem", sapatosService.obterLista());
-
-		return showHome(model);
 	}
 }
