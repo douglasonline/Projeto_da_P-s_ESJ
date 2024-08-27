@@ -32,7 +32,7 @@ public class Produto {
 	
 	@ManyToOne
 	@JoinColumn(name = "idVendedor")
-	private Vendedor vendedor;
+	private Empresa empresa;
 	
 	@Override
 	public String toString() {
@@ -72,10 +72,10 @@ public class Produto {
 	public void setEstoque(boolean estoque) {
 		this.estoque = estoque;
 	}
-	public Vendedor getVendedor() {
-		return vendedor;
+	public Empresa getEmpresa() {
+		return empresa;
 	}
-	public void setVendedor(Vendedor vendedor) {
-		this.vendedor = vendedor;
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
 	}
-}
+	}

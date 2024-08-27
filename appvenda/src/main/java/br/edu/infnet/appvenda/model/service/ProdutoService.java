@@ -1,11 +1,12 @@
 package br.edu.infnet.appvenda.model.service;
 
 import java.util.Collection;
+
+import br.edu.infnet.appvenda.model.domain.Empresa;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.edu.infnet.appvenda.model.domain.Produto;
-import br.edu.infnet.appvenda.model.domain.Vendedor;
 import br.edu.infnet.appvenda.model.repository.ProdutoRepository;
 
 @Service
@@ -26,8 +27,8 @@ public class ProdutoService {
 		return (Collection<Produto>) produtoRepository.findAll();
 	}
 	
-	public Collection<Produto> obterLista(Vendedor vendedor){	
-		return (Collection<Produto>) produtoRepository.obterLista(vendedor.getId());
+	public Collection<Produto> obterLista(Empresa empresa){
+		return (Collection<Produto>) produtoRepository.obterLista(empresa.getId());
 	}
 	
 	public Collection<Produto> obterLista(Integer id){	

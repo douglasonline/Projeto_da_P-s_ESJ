@@ -6,33 +6,33 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import br.edu.infnet.appvenda.model.service.VendedorService;
+import br.edu.infnet.appvenda.model.service.EmpresaService;
 
 @Controller
-public class VendedorController {
+public class EmpresaController {
 
 	@Autowired
 	private AppController appController;
 	
 	@Autowired
-	private VendedorService vendedorService;
+	private EmpresaService empresaService;
 
 
-	@GetMapping(value = "/vendedor/lista")
+	@GetMapping(value = "/empresa/lista")
 	public String obterLista(Model model) {
 		
-		model.addAttribute("rota", "vendedor");
-		model.addAttribute("titulo", "Vendedores:");
-		model.addAttribute("listagem", vendedorService.obterLista());
+		model.addAttribute("rota", "empresa");
+		model.addAttribute("titulo", "Empresas:");
+		model.addAttribute("listagem", empresaService.obterLista());
 
 		return appController.showHome(model);
 	}
 	
-	@GetMapping(value = "/vendedor/{id}/excluir")
+	@GetMapping(value = "/empresa/{id}/excluir")
 	public String excluir(@PathVariable Integer id) {
 		
-		vendedorService.excluir(id);
+		empresaService.excluir(id);
 		
-		return "redirect:/vendedor/lista";
+		return "redirect:/empresa/lista";
 	}
 }

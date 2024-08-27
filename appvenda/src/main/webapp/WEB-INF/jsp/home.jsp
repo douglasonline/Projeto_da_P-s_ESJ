@@ -25,7 +25,7 @@
 	        <a class="nav-link active" href="/">AppVenda</a>
 	      </li>
 	      <li class="nav-item">
-	        <a class="nav-link" href="/vendedor/lista">Vendedores</a>
+	        <a class="nav-link" href="/empresa/lista">Vendedores</a>
 	      </li>
 	      <li class="nav-item">
 	        <a class="nav-link" href="/produto/lista">Produtos</a>
@@ -42,7 +42,7 @@
 	
 	<div class="container mt-3">
 	
-		<span class="badge rounded-pill bg-primary">Vendedor: ${qtdeVendedor}</span>
+		<span class="badge rounded-pill bg-primary">Empresa: ${qtdeEmpresa}</span>
 	  	<span class="badge rounded-pill bg-secondary">Produto: ${qtdeProduto}</span>
 	  	<span class="badge rounded-pill bg-success">Roupas: ${qtdeRoupas}</span>
 	  	<span class="badge rounded-pill bg-danger">Sapatos: ${qtdeSapatos}</span>

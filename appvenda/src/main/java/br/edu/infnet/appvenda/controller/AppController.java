@@ -9,13 +9,13 @@ import br.edu.infnet.appvenda.model.service.InformacaoService;
 import br.edu.infnet.appvenda.model.service.ProdutoService;
 import br.edu.infnet.appvenda.model.service.RoupasService;
 import br.edu.infnet.appvenda.model.service.SapatosService;
-import br.edu.infnet.appvenda.model.service.VendedorService;
+import br.edu.infnet.appvenda.model.service.EmpresaService;
 
 @Controller
 public class AppController {
 	
 	@Autowired
-	private VendedorService vendedorService;
+	private EmpresaService empresaService;
 	@Autowired
 	private ProdutoService produtoService;
 	@Autowired
@@ -30,7 +30,7 @@ public class AppController {
 		
 		model.addAttribute("informacoes", informacaoService.obterLista());
 		
-		model.addAttribute("qtdeVendedor", vendedorService.obterQtde());
+		model.addAttribute("qtdeEmpresa", empresaService.obterQtde());
 		model.addAttribute("qtdeProduto", produtoService.obterQtde());
 		model.addAttribute("qtdeRoupas", roupasService.obterQtde());
 		model.addAttribute("qtdeSapatos", sapatosService.obterQtde());

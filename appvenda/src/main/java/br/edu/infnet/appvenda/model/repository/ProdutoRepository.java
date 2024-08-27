@@ -10,7 +10,7 @@ import br.edu.infnet.appvenda.model.domain.Produto;
 @Repository
 public interface ProdutoRepository extends CrudRepository<Produto, Integer> {
 	
-	@Query("from Produto p WHERE p.vendedor.id = :vendedorId")
+	@Query("from Produto p WHERE p.empresa.id = :vendedorId")
 	Collection<Produto> obterLista(Integer vendedorId);
 
 }

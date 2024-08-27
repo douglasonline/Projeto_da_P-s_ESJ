@@ -3,6 +3,7 @@ package br.edu.infnet.appvenda;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
+import br.edu.infnet.appvenda.model.domain.Empresa;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -10,7 +11,6 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.appvenda.model.domain.Sapatos;
-import br.edu.infnet.appvenda.model.domain.Vendedor;
 import br.edu.infnet.appvenda.model.service.SapatosService;
 
 @Order(4)
@@ -43,10 +43,10 @@ public class SapatosLoader implements ApplicationRunner {
 			sapatos.setTipo(campos[4]);
 			sapatos.setCor(campos[5]);
 			
-			Vendedor vendedor = new Vendedor();
-			vendedor.setId(Integer.valueOf(campos[6]));
+			Empresa empresa = new Empresa();
+			empresa.setId(Integer.valueOf(campos[6]));
 			
-			sapatos.setVendedor(vendedor);
+			sapatos.setEmpresa(empresa);
 			
 			sapatosService.incluir(sapatos);
 			

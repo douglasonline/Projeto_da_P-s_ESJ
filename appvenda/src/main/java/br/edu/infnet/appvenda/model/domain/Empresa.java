@@ -17,30 +17,30 @@ import javax.validation.constraints.Size;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "TVendedor", 
+@Table(name = "TEmpresa",
       uniqueConstraints = {
-    		  @UniqueConstraint(columnNames = {"cpf"}),
-    		  @UniqueConstraint(columnNames = {"email"})
+    		  @UniqueConstraint(columnNames = {"cnpj"}),
+    		  @UniqueConstraint(columnNames = {"gmail"})
     		  })
-public class Vendedor {
+public class Empresa {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
 	@Size(min = 2, max = 50)
-	private String nome;
+	private String razaoSocial;
 	
 	@Pattern(regexp = "\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}")
 	@Column(unique = true)
-	private String cpf;
+	private String cnpj;
 	
 	@Size(min = 2, max = 50)
 	@Column(unique = true)
-	private String email;
+	private String gmail;
 	
 	@OneToMany
-	@JoinColumn(name = "idVendedor")
+	@JoinColumn(name = "idEmpresa")
 	private List<Produto> produtos;
 	
 	@OneToOne(cascade = CascadeType.PERSIST)
@@ -49,11 +49,11 @@ public class Vendedor {
 	
 	@Override
 	public String toString() {
-		return String.format("id (%d) - nome (%s) - cpf (%s) - email (%s) - endereco (%s) - produtos (%d)", 
-				id, 
-				nome, 
-				cpf, 
-				email, 
+		return String.format("id (%d) - razaoSocial (%s) - cnpj (%s) - gmail (%s) - endereco (%s) - produtos (%d)",
+				id,
+				razaoSocial,
+				cnpj,
+				gmail,
 				endereco,
 				produtos != null ? produtos.size() : 0);
 	}
@@ -66,23 +66,23 @@ public class Vendedor {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getRazaoSocial() {
+		return razaoSocial;
 	}
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setRazaoSocial(String nome) {
+		this.razaoSocial = nome;
 	}
-	public String getCpf() {
-		return cpf;
+	public String getCnpj() {
+		return cnpj;
 	}
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
+	public void setCnpj(String cpf) {
+		this.cnpj = cpf;
 	}
-	public String getEmail() {
-		return email;
+	public String getGmail() {
+		return gmail;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setGmail(String email) {
+		this.gmail = email;
 	}
 	public List<Produto> getProdutos() {
 		return produtos;

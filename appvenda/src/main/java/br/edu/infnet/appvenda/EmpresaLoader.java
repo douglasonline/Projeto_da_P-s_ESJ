@@ -5,6 +5,7 @@ import java.io.FileReader;
 
 import javax.validation.ConstraintViolationException;
 
+import br.edu.infnet.appvenda.model.domain.Empresa;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -12,20 +13,19 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.appvenda.model.domain.Endereco;
-import br.edu.infnet.appvenda.model.domain.Vendedor;
-import br.edu.infnet.appvenda.model.service.VendedorService;
+import br.edu.infnet.appvenda.model.service.EmpresaService;
 
 @Order(1)
 @Component
-public class VendedorLoader implements ApplicationRunner {
+public class EmpresaLoader implements ApplicationRunner {
 	
 	@Autowired
-	private VendedorService vendedorService;
+	private EmpresaService empresaService;
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		
-		FileReader file = new FileReader("files/vendedor.txt");		
+		FileReader file = new FileReader("files/empresa.txt");
 		BufferedReader leitura = new BufferedReader(file);
 		
 		String linha = leitura.readLine();
@@ -36,26 +36,26 @@ public class VendedorLoader implements ApplicationRunner {
 			
 			campos = linha.split(";");
 			
-			Vendedor vendedor = new Vendedor();
+			Empresa empresa = new Empresa();
 			
-			vendedor.setNome(campos[0]);
-			vendedor.setCpf(campos[1]);
-			vendedor.setEmail(campos[2]);
-			vendedor.setEndereco(new Endereco(campos[3]));
+			empresa.setRazaoSocial(campos[0]);
+			empresa.setCnpj(campos[1]);
+			empresa.setGmail(campos[2]);
+			empresa.setEndereco(new Endereco(campos[3]));
 			
 			try {
-				vendedorService.incluir(vendedor);
+				empresaService.incluir(empresa);
 			} catch(ConstraintViolationException e) {
-				//System.out.println("[VENDEDOR] " + vendedor);
-				FileLogger.logException("[VENDEDOR] " + vendedor + " - " + e.getMessage());
+				//System.out.println("[EMPRESA] " + empresa);
+				FileLogger.logException("[EMPRESA] " + empresa + " - " + e.getMessage());
 			}
 			
 									
 			linha = leitura.readLine();
 		}
 
-		for(Vendedor vendedor: vendedorService.obterLista()) {
-			System.out.println("[Vendedor] " + vendedor);			
+		for(Empresa empresa : empresaService.obterLista()) {
+			System.out.println("[Empresa] " + empresa);
 		}
 		
 		leitura.close();
